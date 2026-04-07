@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 
 const app = express();
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from './generated/prisma/index.js'
 const prisma = new PrismaClient()
 
 app.use(cors());        // ← 2. use it before routes
