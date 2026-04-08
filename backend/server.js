@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 
 const app = express();
-import { PrismaClient } from './generated/prisma/index.js'
+import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 app.use(cors());        // ← 2. use it before routes
@@ -31,6 +31,10 @@ app.get('/usuarios', async (req, res) =>{
     const users = await prisma.user.findMany()
 
     res.status(200).json(users)
+} )
+app.get('/', req, res =>{
+  
+    req.send("AQUI É O BACK")
 } )
 app.put('/usuarios/:id', async (req, res) =>{
   await prisma.user.update({
